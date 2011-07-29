@@ -1,0 +1,43 @@
+#{extends 'main.html' /}
+#{set title:'Form Generator' /}
+
+<style>
+.draggable{cursor: default;}
+.component-label{background-color: #00F;}
+</style>
+<script>
+	$(function() {
+		$( "#container" ).sortable({
+			revert: true
+		});
+    
+		$( "#label" ).draggable({
+			handle: "div.component-label",
+			connectToSortable: "#container",
+			helper: "clone",
+			revert: "valid"
+    });
+    
+		$( "#label" ).resizable({
+			grid: 57
+		});
+    $( "ul, li" ).disableSelection();
+	});
+  
+  function rename(obj) {
+    var oldLabel = $(obj).children("p").html()
+    var newLabel = prompt("rename", oldLabel)
+    $(obj).children("p").html(newLabel)
+  }
+</script>
+
+<div class="container ui-widget-content">
+
+<div id="label" class="grid1 ui-widget-content" ondblclick="rename(this)"><div class="component-label">aa</div><p>label</p></div>
+<hr class="grid12"/>
+<div id="container" height="100%" class="ui-widget-content" style="margin-top: 60px;">
+<br/>
+Place here to add<br/>
+<br/>
+</div>
+</div>
