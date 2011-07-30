@@ -27,6 +27,13 @@ Learn more ~ http://www.gridsystemgenerator.com/
 	margin-left: 0.66%;
 }
 
+.g1 label, .g2 label, .g3 label, .g4 label, .g5 label, .g6 label, .g7 label, .g8 label, .g9 label, .g10 label, .g11 label, .g12 label, .g13 label, .g14 label, .g15 label, .g16 label, .g17 label, .g18 label, .g19 label, .g20 label, .g21 label, .g22 label, .g23 label, .g24 {
+  width:32%; display: inline-block; text-align: right; margin-right: 8px; max-width: 114px;
+}
+
+.g1 input, .g2 input, .g3 input, .g4 input, .g5 input, .g6 input, .g7 input, .g8 input, .g9 input, .g10 input, .g11 input, .g12 input, .g13 input, .g14 input, .g15 input, .g16 input, .g17 input, .g18 input, .g19 input, .g20 input, .g21 input, .g22 input, .g23 input, .g24 {
+  width:55%;
+}
 /* =Grid >> 24 Columns
 --------------------------------------------------------------------------------*/
 .g1{width:3.5%;}
@@ -35,7 +42,7 @@ Learn more ~ http://www.gridsystemgenerator.com/
 .g4{width:15.98%;}
 .g5{width:20.14%;}
 .g6{width:24.3%;}
-.g6 label{width:30%; display: inline-block; text-align: right; margin-right: 7%;}
+.g6 label{width:32%; display: inline-block; text-align: right; margin-right: 5%;}
 .g7{width:28.46%;}
 .g8{width:32.62%;}
 .g9{width:36.78%;}
