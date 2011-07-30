@@ -1,43 +1,57 @@
 #{extends 'main.html' /}
 #{set title:'Form Generator' /}
 
-<style>
-.draggable{cursor: default;}
-.component-label{background-color: #00F;}
-</style>
-<script>
+
+	<style>
+	ul.container  { list-style-type: none; padding: 0; margin-bottom: 1px; min-height: 100px;}
+  .remove-me{cursor: default; background-color: #FAA; float: right; width: 12px; text-align: center}
+  .container li p { margin: 0px; padding: 0px; border: 0px}
+  ul li {border: 0px; display: block;}
+	</style>
+	<script>
 	$(function() {
-		$( "#container" ).sortable({
+		$( "#sortable" ).sortable({
 			revert: true
 		});
-    
-		$( "#label" ).draggable({
-			handle: "div.component-label",
-			connectToSortable: "#container",
+		$( ".component" ).draggable({
+			connectToSortable: "#sortable",
 			helper: "clone",
-			revert: "valid"
-    });
-    
-		$( "#label" ).resizable({
-			grid: 57
+			revert: "invalid"
 		});
-    $( "ul, li" ).disableSelection();
+		$( "ul, li" ).disableSelection();
 	});
   
-  function rename(obj) {
-    var oldLabel = $(obj).children("p").html()
-    var newLabel = prompt("rename", oldLabel)
-    $(obj).children("p").html(newLabel)
+  function remove(obj) {
+    $(obj).parent().parent().remove()
   }
-</script>
+  
+  function rename(obj) {
+    var oldLabel = $(obj).children("label").html()
+    var newLabel = prompt("rename", oldLabel)
+    $(obj).children("label").html(newLabel)
+  }
+	</script>
 
-<div class="container ui-widget-content">
 
-<div id="label" class="grid1 ui-widget-content" ondblclick="rename(this)"><div class="component-label">aa</div><p>label</p></div>
-<hr class="grid12"/>
-<div id="container" height="100%" class="ui-widget-content" style="margin-top: 60px;">
-<br/>
-Place here to add<br/>
-<br/>
-</div>
-</div>
+
+<div class="container">
+	<div class="g4">aaa</div>
+  <div class="g4">aaa</div>
+  <div class="g4">aaa</div>
+  <div class="g4">aaa</div>
+  <div class="g4">aaa</div>
+  <div class="g4 last">aaa</div>
+  <div class="g4">aaa</div>
+<ul class="container">
+	<li id="draggable" class=" g4 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g6 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g4 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g4 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g4 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g4 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><span class="remove-me" onclick="remove(this)">x</span></div></li>  
+</ul>
+
+</div><!-- End demo -->
+
+<ul id="sortable" class="container ui-widget-header">
+</ul>

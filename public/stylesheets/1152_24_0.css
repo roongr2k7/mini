@@ -1,0 +1,136 @@
+/*
+1152px grid system ~ Core CSS.
+24 columns ~ margin: 0px
+
+Based on the golden grid system - http://code.google.com/p/the-golden-grid/
+by Vladimir Carrer
+
+Created by the Grid System Generator - v1.00
+Learn more ~ http://www.gridsystemgenerator.com/
+*/
+
+/* =Containers
+--------------------------------------------------------------------------------*/
+.container
+{
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1152px;
+  min-width: 755px;
+}
+
+/* =Grid >> Global
+--------------------------------------------------------------------------------*/
+.g1, .g2, .g3, .g4, .g5, .g6, .g7, .g8, .g9, .g10, .g11, .g12, .g13, .g14, .g15, .g16, .g17, .g18, .g19, .g20, .g21, .g22, .g23, .g24 {
+	display: inline;
+	float: left;
+	margin-left: 0.66%;
+}
+
+/* =Grid >> 24 Columns
+--------------------------------------------------------------------------------*/
+.g1{width:3.5%;}
+.g2{width:7.66%;}
+.g3{width:11.82%;}
+.g4{width:15.98%;}
+.g5{width:20.14%;}
+.g6{width:24.3%;}
+.g6 label{width:30%; display: inline-block; text-align: right; margin-right: 7%;}
+.g7{width:28.46%;}
+.g8{width:32.62%;}
+.g9{width:36.78%;}
+.g10{width:40.94%;}
+.g11{width:45.1%;}
+.g12{width:49.26%;}
+.g13{width:53.42%;}
+.g14{width:57.58%;}
+.g15{width:61.74%;}
+.g16{width:65.9%;}
+.g17{width:70.06%;}
+.g18{width:74.22%;}
+.g19{width:78.38%;}
+.g20{width:82.54%;}
+.g21{width:86.7%;}
+.g22{width:90.86%;}
+.g23{width:95.02%;}
+.g24{width:99.18%;}
+
+
+/* Smaller screens */
+
+@media only screen and (max-width: 1023px) {
+
+	body {
+	font-size: 85%;
+	line-height: 150%;
+	}
+	
+	}
+
+
+/* =Grid >> 24 Columns - no left margin
+--------------------------------------------------------------------------------*/
+.ml48{margin-left:48px;}
+.ml96{margin-left:96px;}
+.ml144{margin-left:144px;}
+.ml192{margin-left:192px;}
+.ml240{margin-left:240px;}
+.ml288{margin-left:288px;}
+.ml336{margin-left:336px;}
+.ml384{margin-left:384px;}
+.ml432{margin-left:432px;}
+.ml480{margin-left:480px;}
+.ml528{margin-left:528px;}
+.ml576{margin-left:576px;}
+.ml624{margin-left:624px;}
+.ml672{margin-left:672px;}
+.ml720{margin-left:720px;}
+.ml768{margin-left:768px;}
+.ml816{margin-left:816px;}
+.ml864{margin-left:864px;}
+.ml912{margin-left:912px;}
+.ml960{margin-left:960px;}
+.ml1008{margin-left:1008px;}
+.ml1056{margin-left:1056px;}
+.ml1104{margin-left:1104px;}
+.ml1152{margin-left:1152px;}
+
+
+.inside{margin-left:0;}
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+
+.clearfix:after {
+	clear: both;
+	content:' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}
