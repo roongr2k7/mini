@@ -11,15 +11,34 @@
 	<script>
 	$(function() {
 		$( "#sortable" ).sortable({
-			revert: true
+			revert: true,
+      receive: function(e, ui){
+        generate($(this))
+      }
 		});
-		$( ".component" ).draggable({
+    
+    $( "[component]" ).draggable({
 			connectToSortable: "#sortable",
 			helper: "clone",
 			revert: "invalid"
 		});
+    
 		$( "ul, li" ).disableSelection();
 	});
+  
+  function generate(obj){
+        var code = ""
+        $(obj).children().each(function(idx, elm){
+          code += 'label: ' + $(elm).children('div').children('label').html() 
+          code += ', class: ' + $(elm).prop('class').split(' ')[0] 
+          /*code += " ["
+          code += $(elm).prop('class').split(' ')[0] + $(elm).attr('component') 
+          code += " ]"*/
+          code += " <br />\n"
+          //alert($(elm).prop('class'))
+        })
+        $("#code").html(code)
+  }
   
   function remove(obj) {
     $(obj).parent().parent().remove()
@@ -36,18 +55,23 @@
 
 <div class="container">
 <ul class="container">
-  <li id="draggable" class=" g6 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g6 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g6 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g6 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g8 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g8 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g8 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g12 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g12 component"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g8" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g8" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g8" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g12" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="draggable" class=" g12" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
 </ul>
 
-</div><!-- End demo -->
+</div>
 
-<ul id="sortable" class="container ui-widget-header">
+<ul id="sortable" class="container ui-widget-content">
 </ul>
+
+<div class="container code">
+<button class="g24" onclick="generate($('#sortable'));">generate</button>
+<code id="code">abcdefghi<code>
+</div>
