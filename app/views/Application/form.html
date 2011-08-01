@@ -21,11 +21,21 @@
     $( "[component]" ).draggable({
 			connectToSortable: "#sortable",
 			helper: "clone",
+      drop: function(event, ui) { 
+        console.log($(ui.draggable).children('div').children('[class=remove-on-drop]')) //.remove() 
+      },
 			revert: "invalid"
 		});
     
+    $("[component]").morphable();
+    
 		$( "ul, li" ).disableSelection();
 	});
+  
+  $.fn.morphable = function() {
+    var $sel = $('<select style=\"width: 10px;\" class="remove-on-drop" onchange="$(this).parent().children(\'input\').prop(\'type\',$(this).val())"><option>Text</option><option>Password</option><option>Radio</option><option>Checkbox</option></select>')
+    $sel.insertBefore($(this).children('div').children('span'))
+  }
   
   function generate(obj){
         var code = ""
@@ -33,12 +43,8 @@
         $(obj).children().each(function(idx, elm){
           code += '{\"label\": \"' + $(elm).children('div').children('label').html() + '\"'
           code += ', \"class\": \"' + $(elm).prop('class').replace(' ui-draggable','') + '\"'
-          /*code += " ["
-          code += $(elm).prop('class').split(' ')[0] + $(elm).attr('component') 
-          code += " ]"*/
+          code += ', \"type\": \"' + $(elm).children('div').children('input').prop('type') + '\"'
           code += "}"
-          //i++
-          //alert($(obj).children().length)
           if(idx != $(obj).children().length - 1) {
             code += ",\n"
           }
@@ -69,7 +75,10 @@
       obj = $(objs)[i]
       cls = obj.class.replace(/ /g, '_')
       item = $('#'+cls).clone().appendTo($(container))
-              .children("div").children("label").html(obj.label)
+              .children("div")
+      item.children("label").html(obj.label)
+      item.children("input").prop('type', obj.type)
+              
     }
   }
 	</script>
