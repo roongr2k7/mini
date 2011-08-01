@@ -61,6 +61,14 @@ Learn more ~ http://www.gridsystemgenerator.com/
 .g23{width:95.02%;}
 .g24{width:99.18%;}
 
+.first {
+clear: left;
+}
+
+.last {
+clear: right;
+margin-right: 0px;
+}
 
 /* Smaller screens */
 

@@ -5,9 +5,9 @@
 	<style>
 	ul.container  { list-style-type: none; padding: 0; margin-bottom: 1px; min-height: 100px;}
   .remove-me{cursor: default; background-color: #FAA; float: right; width: 12px; text-align: center; height: 100%;}
-  .container li p { margin: 0px; padding: 0px; border: 0px}
+  .container li p { padding: 0px; border: 0px}
   ul li {border: 0px; display: block; margin-bottom: 3px}
-  .code{font-family: monospace;}
+  .code{font-family: monospace; font-size:90%;}
 	</style>
 	<script>
 	$(function() {
@@ -32,7 +32,7 @@
         //var i = 0
         $(obj).children().each(function(idx, elm){
           code += '{\"label\": \"' + $(elm).children('div').children('label').html() + '\"'
-          code += ', \"class\": \"' + $(elm).prop('class').split(' ')[0] + '\"'
+          code += ', \"class\": \"' + $(elm).prop('class').replace(' ui-draggable','') + '\"'
           /*code += " ["
           code += $(elm).prop('class').split(' ')[0] + $(elm).attr('component') 
           code += " ]"*/
@@ -67,7 +67,7 @@
     $(container).children().remove()
     for(i=0; i<$(objs).length; i++){
       obj = $(objs)[i]
-      cls = obj.class
+      cls = obj.class.replace(/ /g, '_')
       item = $('#'+cls).clone().appendTo($(container))
               .children("div").children("label").html(obj.label)
     }
@@ -78,27 +78,27 @@
 
 <div class="container">
 <ul class="container">
+  <li id="g6_first" class=" g6 first" additional-class="first" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
   <li id="g6" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
   <li id="draggable" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
   <li id="draggable" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g6" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="g8_first" class=" g8 first" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
   <li id="g8" class=" g8" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
   <li id="draggable" class=" g8" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g8" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
+  <li id="g12_first" class=" g12 first" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
   <li id="g12" class=" g12" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
-  <li id="draggable" class=" g12" component="{label input}"><div class="ui-widget-content" ondblclick="rename(this);"><label>Label</label><input type="text" /><span class="remove-me" onclick="remove(this)">x</span></div></li>
 </ul>
 
 </div>
 <div class="container">
-<ul id="sortable" class="container ui-widget-content">
+<ul id="sortable" class="container ui-widget-content" style=" position: relative; overflow: auto; height:auto;">
 </ul>
 </div>
 
 <div class="container code">
 <button class="g12" onclick="generate($('#sortable'));">generate</button>
 <button class="g12" onclick="reload($('#sortable'), $('#code'));">reload</button>
-<textarea id="code" class="g24">
+<textarea id="code" rows="6" class="g24 code">
 {"label": "aa", "class": "g6"},
 {"label": "bb", "class": "g6"}
 </textarea>
